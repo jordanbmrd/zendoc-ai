@@ -49,7 +49,7 @@ const DocumentEditor = () => {
         formData.append('file', file);
 
         try {
-            const response = await fetch('http://127.0.0.1:8000/analyze-doc', {
+            const response = await fetch('https://zendoc.onrender.com/analyze-doc', {
                 method: 'POST',
                 body: formData,
             });
@@ -68,7 +68,7 @@ const DocumentEditor = () => {
         setIsLoading(true);
 
         try {
-            const response = await fetch('http://127.0.0.1:8000/load-example', {
+            const response = await fetch('https://zendoc.onrender.com/load-example', {
                 method: 'POST',
             });
             if (!response.ok) {
@@ -105,7 +105,7 @@ const DocumentEditor = () => {
         setIsSending(true);
 
         try {
-            const response = await fetch('http://127.0.0.1:8000/start-interview', {
+            const response = await fetch('https://zendoc.onrender.com/start-interview', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ fields: fields })
@@ -122,7 +122,7 @@ const DocumentEditor = () => {
     };
 
     const handleInterviewAnswer = async (userText) => {
-        const response = await fetch('http://127.0.0.1:8000/process-interview-answer', {
+        const response = await fetch('https://zendoc.onrender.com/process-interview-answer', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -178,7 +178,7 @@ const DocumentEditor = () => {
                     current_field_explanation: activeField ? activeField.explanation : "General context"
                 };
 
-                const response = await fetch('http://127.0.0.1:8000/ask-assistant', {
+                const response = await fetch('https://zendoc.onrender.com/ask-assistant', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(contextPayload)
